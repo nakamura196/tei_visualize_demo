@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaflet Map with XML Data</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+      #map {
+        height: 80vh; /* 地図の高さを画面の80%に設定 */
+        width: 100%; /* 地図の幅を画面いっぱいに設定 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      const center = [35.6894, 139.6917]; // 地図の中心地を東京に設定
+      const zoom = 2; // 初期ズームレベル
+
+      // 地図の初期化
+      var map = L.map("map").setView(center, zoom);
+
+      // OpenStreetMapのタイルレイヤーを地図に追加
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      // XMLファイルからマーカーを地図に追加する関数
+      function plotMarkersFromXML(xmlData) {
+        var places = xmlData.getElementsByTagName("place");
+        for (var i = 0; i < places.length; i++) {
+          var place = places[i];
+          const geoList = place.getElementsByTagName("geo");
+
+          for (const geo of geoList) {
+            var [lat, lon] = geo.textContent.trim().split(" ").map(Number); // 文字列を数値の緯度経度に変換
+
+            // マーカーを作成して地図上に追加
+            var marker = L.marker([lat, lon]).addTo(map);
+
+            const placeName =
+              place.getElementsByTagName("placeName")[0].textContent;
+
+            // マーカーにクリック時のポップアップを設定
+            marker.bindPopup(placeName);
+          }
+        }
+      }
+
+      // XMLファイルを非同期で読み込み、マーカーをプロットする
+      function loadXML(xmlFile) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(
+              this.responseText,
+              "text/xml"
+            );
+            plotMarkersFromXML(xmlDoc); // 読み込んだXMLデータを使用してマーカーをプロット
+          }
+        };
+        xhttp.open("GET", xmlFile, true);
+        xhttp.send();
+      }
+
+      // XMLファイルのURLを指定して読み込み開始
+      loadXML(
+        "https://raw.githubusercontent.com/shibusawa-dlab/lab1/master/tei/entity.xml"
+      );
+    </script>
+  </body>
+</html>
