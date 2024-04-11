@@ -1,5 +1,7 @@
 # tei_visualize_demo
 
+A demonstration page for visualizing TEI/XML.
+
 TEI/XML を可視化するデモページです。
 
 ## 🌐 Website
