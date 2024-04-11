@@ -5,26 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+
   <body>
     <nav class="bg-gray-800">
-      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div class="relative flex h-16 items-center justify-between">
-          <div
-            class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-          >
-            <div class="flex flex-shrink-0 items-center">
-              <span class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">
-                TEI Visualize Demo
-              </span>
-            </div>
+      <div class="relative flex h-16 items-center justify-between">
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+        >
+          <div class="flex flex-shrink-0 items-center">
+            <span
+              class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+              >TEI Visualize Demo</span
+            >
           </div>
+        </div>
       </div>
     </nav>
-
-    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 sm:py-6 lg:py-8">
-
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="px-4 sm:px-6 lg:px-8">
-        
         <div class="mt-8 flow-root">
           <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div
@@ -35,7 +33,7 @@
                   <tr>
                     <th
                       scope="col"
-                      class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                      class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:pl-0"
                     >
                       ID
                     </th>
@@ -54,9 +52,7 @@
                     <th
                       scope="col"
                       class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                    Source Code
-                    </th>
+                    ></th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -64,24 +60,36 @@
                     <td
                       class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"
                     >
-                    <a href="01" class="text-indigo-600 hover:text-indigo-900"
-                    >01</a
-                  >
+                      01
                     </td>
                     <td
                       class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                     >
-                      <p class="py-2">Loading TEI XML and plotting markers on a map.</p>
+                      <p class="py-2">
+                        Loading TEI XML and plotting markers on a map.
+                      </p>
                     </td>
-
                     <td
                       class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                     >
-                      <p class="py-2">TEI XMLを読み込んでマーカーを地図上にプロットする</p>
-                      <p class="py-2">「<a href="https://github.com/shibusawa-dlab/lab1" target="_blank" class="text-indigo-600 hover:text-indigo-900">TEIを用いた『渋沢栄一伝記資料』テキストデータの再構築と活用</a>」のデータを利用しています。</p>
+                      <p class="py-2">
+                        TEI XMLを読み込んでマーカーを地図上にプロットする
+                      </p>
                     </td>
-                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        <a target="_blank" href="https://github.com/nakamura196/tei_visualize_demo/blob/main/docs/01/index.html" class="text-indigo-600 hover:text-indigo-900">View</a>
+                    <td>
+                      <p>
+                        <a
+                          href="01"
+                          class="text-indigo-600 hover:text-indigo-900"
+                        >
+                          <button
+                            type="button"
+                            class="rounded-md bg-indigo-500 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                          >
+                            View
+                          </button>
+                        </a>
+                      </p>
                     </td>
                   </tr>
                 </tbody>
